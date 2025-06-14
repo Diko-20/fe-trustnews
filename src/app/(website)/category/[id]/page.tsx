@@ -9,6 +9,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import axiosInstance from "../../../../../lib/axios";
+import { formatTanggalIndonesia } from "@/lib/date";
 
 type Params = {
     id: number
@@ -94,7 +95,7 @@ export default function ContentByCategory({params}: ContentByCategoryPageProps) 
                                         </span>
                                     </Link>
                                 </h2>
-                                <div className="mt-3 flex items-center space-x-3 text-gray-500">
+                                <div className="mt-3 flex items-center space-x-3 text-gray-500 justify-between">
                                     <Link href={""}>
                                         <div className="flex items-center gap-3">
                                             <div className="relative h-5 w-5 flex-shrink-0">
@@ -104,7 +105,7 @@ export default function ContentByCategory({params}: ContentByCategoryPageProps) 
                                         </div>
                                     </Link>
                                     <span className="text-xs text-gray-300">.</span>
-                                    <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content.created_at}</time>
+                                    <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content && formatTanggalIndonesia(content.created_at)}</time>
                                 </div>
                             </div>
                         </div>

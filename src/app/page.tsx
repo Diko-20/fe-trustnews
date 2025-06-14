@@ -7,6 +7,7 @@ import axiosInstance from "../../lib/axios";
 import { ApiResponse } from "@/model/ApiResponse";
 import Swal from "sweetalert2";
 import Link from "next/link";
+import { formatTanggalIndonesia } from "@/lib/date";
 
 export default function Home() {
   const [contents, setContents] = useState<Content[]>([]);
@@ -68,7 +69,7 @@ export default function Home() {
                     </span>
                   </Link>
                 </h2>
-                <div className="mt-3 flex items-center space-x-3 text-gray-500">
+                <div className="mt-3 flex items-center justify-between space-x-3 text-gray-500">
                   <Link href={""}>
                     <div className="flex items-center gap-3">
                       <div className="relative h-5 w-5 flex-shrink-0">
@@ -77,8 +78,8 @@ export default function Home() {
                       <span className="truncate text-sm">{content.author}</span>
                     </div>
                   </Link>
-                  <span className="text-xs text-gray-300">.</span>
-                  <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content.created_at}</time>
+                  {/* <span className="text-xs text-gray-300">.</span> */}
+                  <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content && formatTanggalIndonesia(content.created_at)}</time>
                 </div>
               </div>
             </div>
@@ -123,7 +124,7 @@ export default function Home() {
                     </div>
                   </Link>
                   <span className="text-xs text-gray-300">.</span>
-                  <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content.created_at}</time>
+                  <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content && formatTanggalIndonesia(content.created_at)}</time>
                 </div>
               </div>
             </div>

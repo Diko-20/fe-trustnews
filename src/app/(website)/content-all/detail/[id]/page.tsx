@@ -7,6 +7,7 @@ import { ApiResponse } from "@/model/ApiResponse";
 import Swal from "sweetalert2";
 import Link from "next/link";
 import Image from "next/image";
+import { formatTanggalIndonesia } from "@/lib/date";
 
 type Params = {
     id: number
@@ -67,7 +68,7 @@ export default function ContentDetail({params}: ContentDetailPageProps) {
                                 {content?.author}
                             </p>
                             <div className="flex items-center space-x-2 text-sm">
-                                <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content?.created_at}</time>
+                                <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content && formatTanggalIndonesia(content.created_at)}</time>
                             </div>
                         </div>
                     </div>
@@ -80,7 +81,12 @@ export default function ContentDetail({params}: ContentDetailPageProps) {
             <div className="container px-8 mx-auto xl:px-5 max-w-screen py-5 lg:py-8">
                 <article className="mx-auto max-w-screen-md">
                     <div className="prose mx-auto my-3">
-                        {content?.description}
+                        {content?.description?.split("\n").map((line, index) => (
+                            <React.Fragment key={index}>
+                            {line}
+                            <br />
+                            </React.Fragment>
+                        ))}
                     </div>
                     <div className="mb-7 mt-7 flex justify-center">
                         <Link href={`/content-all`} className="bg-brand-secondary/20 rounded-full px-5 py-2 text-sm text-blue-600">

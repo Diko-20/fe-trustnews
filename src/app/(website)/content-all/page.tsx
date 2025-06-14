@@ -9,6 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { formatTanggalIndonesia } from "@/lib/date";
 
 export default function ContentAll() {
     const [contents, setContents] = useState<Content[]>([]);
@@ -63,8 +64,10 @@ export default function ContentAll() {
                             <div className="overflow-hidden rounded-md bg-gray-100 transition-all hover:scale-105">
                                 <Link className="relative block aspect-ratio" href={`/content-all/detail/${content.id}`}>
                                     {content.image != "" && (
-                                        <Image src={content.image} alt={content.title}
-                                            fill={true} className="object-cover transition-all"/>
+                                        // <Image src={content.image} alt={content.title}
+                                        //     fill={true} className="object-cover transition-all"/>
+                                            <img src={content?.image}  alt={`${content?.title}`} 
+                                            className="object-cover h-80 w-screen"/>
                                     )} 
                                     {content.image == "" && (
                                         <img src="https://placehold.co/600x400" alt="data" className="object-cover transition-all" />
@@ -86,7 +89,7 @@ export default function ContentAll() {
                                         </span>
                                     </Link>
                                 </h2>
-                                <div className="mt-3 flex items-center space-x-3 text-gray-500">
+                                <div className="mt-3 flex items-center justify-between space-x-3 text-gray-500">
                                     <Link href={""}>
                                         <div className="flex items-center gap-3">
                                             <div className="relative h-5 w-5 flex-shrink-0">
@@ -96,7 +99,7 @@ export default function ContentAll() {
                                         </div>
                                     </Link>
                                     <span className="text-xs text-gray-300">.</span>
-                                    <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content.created_at}</time>
+                                    <time dateTime={"2024-11-26T15:48:00Z"} className="truncate text-sm">{content && formatTanggalIndonesia(content.created_at)}</time>
                                 </div>
                             </div>
                         </div>
