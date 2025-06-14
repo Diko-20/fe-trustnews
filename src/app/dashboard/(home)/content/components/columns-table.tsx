@@ -39,6 +39,7 @@ export const columns: ColumnDef<Content>[] = [
   },
   {
     accessorKey: "actions",
+    header: "Actions",
     cell: ({row}) => {
         const content = row.original;
 

@@ -9,7 +9,7 @@ import ButtonLogout from "./(home)/components/button-logout";
 const inter = Inter({subsets: ["latin"]})
 
 export const metadata: Metadata = {
-  title: "Dashboard",
+  title: "Trust News - Dashboard",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
                 <nav className="border-b border-muted p-5">
                     <div className="flex flex-row items-center justify-between">
                         <span className="font-bold text-primary">
-                            NewsGo
+                            TrustNews
                         </span>
                     </div>
                 </nav>

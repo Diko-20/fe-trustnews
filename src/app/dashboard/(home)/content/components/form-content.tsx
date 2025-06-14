@@ -217,7 +217,7 @@ const FormContentPage: FC<FormContentProps> = ({type, defaultValues, categoryLis
                         <SelectTrigger id="categoryId">
                             <SelectValue placeholder="Pilih Kategori" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                             {categories.map((category) =>(
                                 <SelectItem key={category.id} value={category.id.toString()}>
                                     {category.title}
@@ -286,7 +286,7 @@ const FormContentPage: FC<FormContentProps> = ({type, defaultValues, categoryLis
                         <SelectTrigger id="status">
                             <SelectValue placeholder="Pilih Status"/>
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent style={{backgroundColor: 'white'}}>
                             {statusList.map((status) => 
                                 <SelectItem key={status.value} value={status.value}>
                                     {status.label}
